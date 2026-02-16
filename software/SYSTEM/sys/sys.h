@@ -25,21 +25,24 @@
 #define MEM_ADDR(addr)  *((volatile unsigned long  *)(addr)) 
 #define BIT_ADDR(addr, bitnum)   MEM_ADDR(BITBAND(addr, bitnum)) 
 //IO口地址映射
-#define GPIOA_ODR_Addr    (GPIOA_BASE+12) //0x4001080C 
-#define GPIOB_ODR_Addr    (GPIOB_BASE+12) //0x40010C0C 
-#define GPIOC_ODR_Addr    (GPIOC_BASE+12) //0x4001100C 
-#define GPIOD_ODR_Addr    (GPIOD_BASE+12) //0x4001140C 
-#define GPIOE_ODR_Addr    (GPIOE_BASE+12) //0x4001180C 
-#define GPIOF_ODR_Addr    (GPIOF_BASE+12) //0x40011A0C    
-#define GPIOG_ODR_Addr    (GPIOG_BASE+12) //0x40011E0C    
+#define GPIO_ODR_OFFSET   20  // ODR寄存器偏移
+#define GPIO_IDR_OFFSET   16  // IDR寄存器偏移
 
-#define GPIOA_IDR_Addr    (GPIOA_BASE+8) //0x40010808 
-#define GPIOB_IDR_Addr    (GPIOB_BASE+8) //0x40010C08 
-#define GPIOC_IDR_Addr    (GPIOC_BASE+8) //0x40011008 
-#define GPIOD_IDR_Addr    (GPIOD_BASE+8) //0x40011408 
-#define GPIOE_IDR_Addr    (GPIOE_BASE+8) //0x40011808 
-#define GPIOF_IDR_Addr    (GPIOF_BASE+8) //0x40011A08 
-#define GPIOG_IDR_Addr    (GPIOG_BASE+8) //0x40011E08 
+#define GPIOA_ODR_Addr    (GPIOA_BASE+GPIO_ODR_OFFSET) //0x4001080C 
+#define GPIOB_ODR_Addr    (GPIOB_BASE+GPIO_ODR_OFFSET) //0x40010C0C 
+#define GPIOC_ODR_Addr    (GPIOC_BASE+GPIO_ODR_OFFSET) //0x4001100C 
+#define GPIOD_ODR_Addr    (GPIOD_BASE+GPIO_ODR_OFFSET) //0x4001140C 
+#define GPIOE_ODR_Addr    (GPIOE_BASE+GPIO_ODR_OFFSET) //0x4001180C 
+#define GPIOF_ODR_Addr    (GPIOF_BASE+GPIO_ODR_OFFSET) //0x40011A0C    
+#define GPIOG_ODR_Addr    (GPIOG_BASE+GPIO_ODR_OFFSET) //0x40011E0C    
+
+#define GPIOA_IDR_Addr    (GPIOA_BASE+GPIO_IDR_OFFSET) //0x40010808 
+#define GPIOB_IDR_Addr    (GPIOB_BASE+GPIO_IDR_OFFSET) //0x40010C08 
+#define GPIOC_IDR_Addr    (GPIOC_BASE+GPIO_IDR_OFFSET) //0x40011008 
+#define GPIOD_IDR_Addr    (GPIOD_BASE+GPIO_IDR_OFFSET) //0x40011408 
+#define GPIOE_IDR_Addr    (GPIOE_BASE+GPIO_IDR_OFFSET) //0x40011808 
+#define GPIOF_IDR_Addr    (GPIOF_BASE+GPIO_IDR_OFFSET) //0x40011A08 
+#define GPIOG_IDR_Addr    (GPIOG_BASE+GPIO_IDR_OFFSET) //0x40011E08 
  
 //IO口操作,只对单一的IO口!
 //确保n的值小于16!
@@ -64,6 +67,8 @@
 #define PGout(n)   BIT_ADDR(GPIOG_ODR_Addr,n)  //输出 
 #define PGin(n)    BIT_ADDR(GPIOG_IDR_Addr,n)  //输入
 
+
+#define UNUSED (x)  (void)(x)
 //以下为汇编函数
 void WFI_SET(void);		//执行WFI指令
 void INTX_DISABLE(void);//关闭所有中断

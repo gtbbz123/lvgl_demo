@@ -37,3 +37,7 @@
 ..\obj\lcd.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\lcd.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\lcd.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\lcd.o: ..\SYSTEM\UART\uart.h
+..\obj\lcd.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdarg.h
+..\obj\lcd.o: ..\HARDWARE\LCD\lcd_ex.c
+..\obj\lcd.o: ..\SYSTEM\DEALY\delay.h

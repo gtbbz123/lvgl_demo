@@ -89,12 +89,14 @@ uint8_t ft5206_init(void)
     FT5206_INT_GPIO_CLK_ENABLE();   /* INT引脚时钟使能 */
 
     gpio_init_struct.GPIO_Pin = FT5206_RST_GPIO_PIN;
-    gpio_init_struct.GPIO_Mode = GPIO_Mode_Out_PP;            /* 推挽输出 */
+    gpio_init_struct.GPIO_Mode = GPIO_Mode_OUT;            /* 推挽输出 */
+		gpio_init_struct.GPIO_OType = GPIO_OType_PP;          /* 推挽输出 */
     gpio_init_struct.GPIO_Speed = GPIO_Speed_50MHz;          /* 高速 */
     GPIO_Init(FT5206_RST_GPIO_PORT, &gpio_init_struct); /* 初始化RST引脚 */
 
     gpio_init_struct.GPIO_Pin = FT5206_INT_GPIO_PIN;
-    gpio_init_struct.GPIO_Mode = GPIO_Mode_IN_FLOATING;                /* 输入 */
+    gpio_init_struct.GPIO_Mode = GPIO_Mode_IN;  /* 推挽输出 */    
+		gpio_init_struct.GPIO_PuPd	= GPIO_PuPd_NOPULL;			/* 输入 */
     gpio_init_struct.GPIO_Speed = GPIO_Speed_50MHz;          /* 高速 */
     GPIO_Init(FT5206_INT_GPIO_PORT, &gpio_init_struct); /* 初始化INT引脚 */
 

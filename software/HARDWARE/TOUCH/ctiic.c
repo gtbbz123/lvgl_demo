@@ -38,12 +38,14 @@ void ct_iic_init(void)
     CT_IIC_SDA_GPIO_CLK_ENABLE();   /* SDA引脚时钟使能 */
 
     gpio_init_struct.GPIO_Pin = CT_IIC_SCL_GPIO_PIN;
-    gpio_init_struct.GPIO_Mode = GPIO_Mode_Out_PP;             /* 推挽输出 */
+        gpio_init_struct.GPIO_Mode = GPIO_Mode_OUT;            /* 推挽输出 */
+		gpio_init_struct.GPIO_OType = GPIO_OType_PP;            /* 推挽输出 */
     gpio_init_struct.GPIO_Speed = GPIO_Speed_50MHz;           /* 高速 */
     GPIO_Init(CT_IIC_SCL_GPIO_PORT, &gpio_init_struct);  /* 初始化SCL引脚 */
     
     gpio_init_struct.GPIO_Pin = CT_IIC_SDA_GPIO_PIN;
-    gpio_init_struct.GPIO_Mode = GPIO_Mode_Out_OD;             /* 开漏输出 */
+        gpio_init_struct.GPIO_Mode = GPIO_Mode_OUT;            /* 推挽输出 */
+		gpio_init_struct.GPIO_OType = GPIO_OType_OD;             /* 开漏输出 */
     GPIO_Init(CT_IIC_SDA_GPIO_PORT, &gpio_init_struct);  /* 初始化SDA引脚 */
     /* SDA引脚模式设置,开漏输出,上拉, 这样就不用再设置IO方向了, 开漏输出的时候(=1), 也可以读取外部信号的高低电平 */
 

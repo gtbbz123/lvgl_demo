@@ -16,8 +16,9 @@
 #include "lcd.h"
 #include "lcdfont.h"
 #include "stm32f4xx.h"
-#include "stm32f10x_fsmc.h"
-#include "stm32f10x_gpio.h"
+#include "stm32f4xx_fsmc.h"
+#include "stm32f4xx_gpio.h"
+#include "uart.h"
 /* lcd_ex.c存放各个LCD驱动IC的寄存器初始化部分代码,以简化lcd.c,该.c文件
  * 不直接加入到工程里面,只有lcd.c会用到,所以通过include的形式添加.(不要在
  * 其他文件再包含该.c文件!!否则会报错!)
@@ -598,13 +599,14 @@ void HAL_SRAM_MspInit()
     //__HAL_RCC_FSMC_CLK_ENABLE();            /* 使能FSMC时钟 */
     //__HAL_RCC_GPIOD_CLK_ENABLE();           /* 使能GPIOD时钟 */
     //__HAL_RCC_GPIOE_CLK_ENABLE();           /* 使能GPIOE时钟 */
-		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD,ENABLE);
-		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE,ENABLE);
-		RCC_AHBPeriphClockCmd(RCC_AHBPeriph_FSMC,ENABLE);
-    /* 初始化PD0,1,8,9,10,14,15 */
+		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE);
+		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE,ENABLE);
+		RCC_AHB3PeriphClockCmd(RCC_AHB3Periph_FSMC,ENABLE);
+    /* 初始化PD0, 1, 8, 9, 10, 14,15*/
     gpio_init_struct.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_8 \
                            | GPIO_Pin_9 | GPIO_Pin_10 | GPIO_Pin_14 | GPIO_Pin_15;
-    gpio_init_struct.GPIO_Mode = GPIO_Mode_AF_PP;                  /* 推挽复用 */
+    gpio_init_struct.GPIO_Mode = GPIO_Mode_AF;                  /* 推挽复用 */
+		gpio_init_struct.GPIO_OType = GPIO_OType_PP;
     gpio_init_struct.GPIO_Speed = GPIO_Speed_50MHz;            /* 高速 */
     GPIO_Init(GPIOD, &gpio_init_struct);                  /* 初始化 */
 
@@ -636,7 +638,8 @@ void lcd_init(void)
 	  LCD_RST_GPIO_CLK_ENABLE();  /* LCD_RST脚时钟使能 */
     
     gpio_init_struct.GPIO_Pin = LCD_CS_GPIO_PIN;
-    gpio_init_struct.GPIO_Mode = GPIO_Mode_AF_PP;                /* 推挽复用 */
+    gpio_init_struct.GPIO_Mode = GPIO_Mode_AF;                  /* 推挽复用 */
+		gpio_init_struct.GPIO_OType = GPIO_OType_PP;
     gpio_init_struct.GPIO_Speed = GPIO_Speed_50MHz;          /* 高速 */
     GPIO_Init(LCD_CS_GPIO_PORT, &gpio_init_struct);     /* 初始化LCD_CS引脚 */
 
@@ -650,11 +653,13 @@ void lcd_init(void)
     GPIO_Init(LCD_RS_GPIO_PORT, &gpio_init_struct);     /* 初始化LCD_RS引脚 */
 
     gpio_init_struct.GPIO_Pin = LCD_BL_GPIO_PIN;
-    gpio_init_struct.GPIO_Mode = GPIO_Mode_Out_PP;            /* 推挽输出 */
+    gpio_init_struct.GPIO_Mode = GPIO_Mode_OUT;            /* 推挽输出 */
+		gpio_init_struct.GPIO_OType = GPIO_OType_PP;            /* 推挽输出 */
     GPIO_Init(LCD_BL_GPIO_PORT, &gpio_init_struct);     /* LCD_BL引脚模式设置(推挽输出) */
 		
 		gpio_init_struct.GPIO_Pin = LCD_RST_GPIO_PIN;
-    gpio_init_struct.GPIO_Mode = GPIO_Mode_Out_PP;            /* 推挽输出 */
+    gpio_init_struct.GPIO_Mode = GPIO_Mode_OUT;            /* 推挽输出 */
+		gpio_init_struct.GPIO_OType = GPIO_OType_PP;           /* 推挽输出 */
     GPIO_Init(LCD_RST_GPIO_PORT, &gpio_init_struct);    /* LCD_RST引脚模式设置(推挽输出) */
 
 //    g_sram_handle.Instance = FSMC_NORSRAM_DEVICE;
@@ -671,7 +676,7 @@ void lcd_init(void)
 //    g_sram_handle.Init.ExtendedMode = FSMC_EXTENDED_MODE_ENABLE;           /* 读写使用不同的时序 */
 //    g_sram_handle.Init.AsynchronousWait = FSMC_ASYNCHRONOUS_WAIT_DISABLE;  /* 是否使能同步传输模式下的等待信号,此处未用到 */
 //    g_sram_handle.Init.WriteBurst = FSMC_WRITE_BURST_DISABLE;              /* 禁止突发写 */
-			g_sram_handle.FSMC_Bank = FSMC_Bank1_NORSRAM1;        // 使用BANK1
+			g_sram_handle.FSMC_Bank = FSMC_Bank1_NORSRAM4;        // 使用BANK1
 			g_sram_handle.FSMC_DataAddressMux = FSMC_DataAddressMux_Disable; // 地址数据不复用
 			g_sram_handle.FSMC_MemoryType = FSMC_MemoryType_SRAM; // 存储器类型为SRAM
 			g_sram_handle.FSMC_MemoryDataWidth = FSMC_MemoryDataWidth_16b;   // 16位数据宽度
@@ -702,7 +707,7 @@ void lcd_init(void)
 		g_sram_handle.FSMC_WriteTimingStruct = &fsmc_write_handle;
 		
     FSMC_NORSRAMInit(&g_sram_handle);
-		FSMC_NORSRAMCmd(FSMC_Bank1_NORSRAM1, ENABLE);
+		FSMC_NORSRAMCmd(FSMC_Bank1_NORSRAM4, ENABLE);
     delay_ms(50);        /* 初始化FSMC后,必须等待一定时间才能开始初始化 */
 		
 		/* LCD复位 */
@@ -720,7 +725,7 @@ void lcd_init(void)
     lcddev.id = lcd_rd_data();  /* 读取0X93 */
     lcddev.id <<= 8;
     lcddev.id |= lcd_rd_data(); /* 读取0X41 */
-
+		UART_printf("lcddev.id = %X\n",lcddev.id);
     if (lcddev.id != 0X9341)    /* 不是 9341 , 尝试看看是不是 ST7789 */
     {
         lcd_wr_regno(0X04);

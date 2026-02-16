@@ -30,28 +30,28 @@
 
 #define LCD_RST_GPIO_PORT               GPIOD
 #define LCD_RST_GPIO_PIN                GPIO_Pin_11
-#define LCD_RST_GPIO_CLK_ENABLE()       do{ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD,ENABLE); }while(0)   /* 所在IO口时钟使能 */
+#define LCD_RST_GPIO_CLK_ENABLE()       do{ RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE); }while(0)   /* 所在IO口时钟使能 */
 
 #define LCD_WR_GPIO_PORT                GPIOD
 #define LCD_WR_GPIO_PIN                 GPIO_Pin_5
-#define LCD_WR_GPIO_CLK_ENABLE()        do{ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD,ENABLE); }while(0)   /* 所在IO口时钟使能 */
+#define LCD_WR_GPIO_CLK_ENABLE()        do{ RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE); }while(0)   /* 所在IO口时钟使能 */
 
 #define LCD_RD_GPIO_PORT                GPIOD
 #define LCD_RD_GPIO_PIN                 GPIO_Pin_4
-#define LCD_RD_GPIO_CLK_ENABLE()        do{ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD,ENABLE); }while(0)   /* 所在IO口时钟使能 */
+#define LCD_RD_GPIO_CLK_ENABLE()        do{ RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE); }while(0)   /* 所在IO口时钟使能 */
 
-#define LCD_BL_GPIO_PORT                GPIOD
-#define LCD_BL_GPIO_PIN                 GPIO_Pin_12
-#define LCD_BL_GPIO_CLK_ENABLE()        do{ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD,ENABLE); }while(0)   /* 背光所在IO口时钟使能 */
+#define LCD_BL_GPIO_PORT                GPIOB
+#define LCD_BL_GPIO_PIN                 GPIO_Pin_15
+#define LCD_BL_GPIO_CLK_ENABLE()        do{ RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB,ENABLE); }while(0)   /* 背光所在IO口时钟使能 */
 
 /* LCD_CS(需要根据LCD_FSMC_NEX设置正确的IO口) 和 LCD_RS(需要根据LCD_FSMC_AX设置正确的IO口) 引脚 定义 */
-#define LCD_CS_GPIO_PORT                GPIOD
-#define LCD_CS_GPIO_PIN                 GPIO_Pin_7
-#define LCD_CS_GPIO_CLK_ENABLE()        do{ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD,ENABLE); }while(0)   /* 所在IO口时钟使能 */
+#define LCD_CS_GPIO_PORT                GPIOG
+#define LCD_CS_GPIO_PIN                 GPIO_Pin_12
+#define LCD_CS_GPIO_CLK_ENABLE()        do{ RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOG,ENABLE); }while(0)   /* 所在IO口时钟使能 */
 
-#define LCD_RS_GPIO_PORT                GPIOD
-#define LCD_RS_GPIO_PIN                 GPIO_Pin_13
-#define LCD_RS_GPIO_CLK_ENABLE()        do{ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD,ENABLE); }while(0)   /* 所在IO口时钟使能 */
+#define LCD_RS_GPIO_PORT                GPIOF
+#define LCD_RS_GPIO_PIN                 GPIO_Pin_12
+#define LCD_RS_GPIO_CLK_ENABLE()        do{ RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF,ENABLE); }while(0)   /* 所在IO口时钟使能 */
 
 /* FSMC相关参数 定义 
  * 注意: 我们默认是通过FSMC块1来连接LCD, 块1有4个片选: FSMC_NE1~4
@@ -59,12 +59,12 @@
  * 修改LCD_FSMC_NEX, 对应的LCD_CS_GPIO相关设置也得改
  * 修改LCD_FSMC_AX , 对应的LCD_RS_GPIO相关设置也得改
  */
-#define LCD_FSMC_NEX         1              /* 使用FSMC_NE1接LCD_CS,取值范围只能是: 1~4 */
-#define LCD_FSMC_AX          18             /* 使用FSMC_A18接LCD_RS,取值范围是: 0 ~ 25 */
+#define LCD_FSMC_NEX         4              /* 使用FSMC_NE1接LCD_CS,取值范围只能是: 1~4 */
+#define LCD_FSMC_AX          6             /* 使用FSMC_A18接LCD_RS,取值范围是: 0 ~ 25 */
 
-#define LCD_FSMC_BCRX        FSMC_Bank1->BTCR[(LCD_FSMC_NEX - 1) * 2]       /* BCR寄存器,根据LCD_FSMC_NEX自动计算 */
-#define LCD_FSMC_BTRX        FSMC_Bank1->BTCR[(LCD_FSMC_NEX - 1) * 2 + 1]   /* BTR寄存器,根据LCD_FSMC_NEX自动计算 */
-#define LCD_FSMC_BWTRX       FSMC_Bank1E->BWTR[(LCD_FSMC_NEX - 1) * 2]      /* BWTR寄存器,根据LCD_FSMC_NEX自动计算 */
+#define LCD_FSMC_BCRX        FSMC_Bank4->BTCR[(LCD_FSMC_NEX - 1) * 2]       /* BCR寄存器,根据LCD_FSMC_NEX自动计算 */
+#define LCD_FSMC_BTRX        FSMC_Bank4->BTCR[(LCD_FSMC_NEX - 1) * 2 + 1]   /* BTR寄存器,根据LCD_FSMC_NEX自动计算 */
+#define LCD_FSMC_BWTRX       FSMC_Bank4->BWTR[(LCD_FSMC_NEX - 1) * 2]      /* BWTR寄存器,根据LCD_FSMC_NEX自动计算 */
 
 /******************************************************************************************/
 

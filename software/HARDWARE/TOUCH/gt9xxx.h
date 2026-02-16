@@ -23,13 +23,13 @@
 /******************************************************************************************/
 /* GT9XXX INT 和 RST 引脚 定义 */
 
-#define GT9XXX_RST_GPIO_PORT            GPIOG
-#define GT9XXX_RST_GPIO_PIN             GPIO_Pin_3
-#define GT9XXX_RST_GPIO_CLK_ENABLE()    do{ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOG,ENABLE); }while(0)   /* PG口时钟使能 */
+#define GT9XXX_RST_GPIO_PORT            GPIOC
+#define GT9XXX_RST_GPIO_PIN             GPIO_Pin_13
+#define GT9XXX_RST_GPIO_CLK_ENABLE()    do{ RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC,ENABLE); }while(0)   /* PG口时钟使能 */
 
-#define GT9XXX_INT_GPIO_PORT            GPIOG
-#define GT9XXX_INT_GPIO_PIN             GPIO_Pin_4
-#define GT9XXX_INT_GPIO_CLK_ENABLE()    do{ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOG,ENABLE); }while(0)   /* PG口时钟使能 */
+#define GT9XXX_INT_GPIO_PORT            GPIOB
+#define GT9XXX_INT_GPIO_PIN             GPIO_Pin_1
+#define GT9XXX_INT_GPIO_CLK_ENABLE()    do{ RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB,ENABLE); }while(0)   /* PG口时钟使能 */
 
 /******************************************************************************************/
 

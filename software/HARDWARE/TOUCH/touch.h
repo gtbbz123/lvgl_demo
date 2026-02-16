@@ -24,25 +24,25 @@
 /******************************************************************************************/
 /* 电阻触摸屏驱动IC T_PEN/T_CS/T_MISO/T_MOSI/T_SCK 引脚 定义 */
 
-#define T_PEN_GPIO_PORT                 GPIOG
-#define T_PEN_GPIO_PIN                  GPIO_Pin_4
-#define T_PEN_GPIO_CLK_ENABLE()         do{ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOG,ENABLE); }while(0)   /* 所在IO口时钟使能 */
+#define T_PEN_GPIO_PORT                 GPIOB
+#define T_PEN_GPIO_PIN                  GPIO_Pin_1
+#define T_PEN_GPIO_CLK_ENABLE()         do{ RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB,ENABLE); }while(0)   /* 所在IO口时钟使能 */
 
-#define T_CS_GPIO_PORT                  GPIOG
-#define T_CS_GPIO_PIN                   GPIO_Pin_3
-#define T_CS_GPIO_CLK_ENABLE()          do{ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOG,ENABLE); }while(0)   /* 所在IO口时钟使能 */
+#define T_CS_GPIO_PORT                  GPIOC
+#define T_CS_GPIO_PIN                   GPIO_Pin_13
+#define T_CS_GPIO_CLK_ENABLE()          do{ RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC,ENABLE); }while(0)   /* 所在IO口时钟使能 */
 
-#define T_MISO_GPIO_PORT                GPIOG
-#define T_MISO_GPIO_PIN                 GPIO_Pin_6
-#define T_MISO_GPIO_CLK_ENABLE()        do{ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOG,ENABLE); }while(0)   /* 所在IO口时钟使能 */
+#define T_MISO_GPIO_PORT                GPIOB
+#define T_MISO_GPIO_PIN                 GPIO_Pin_2
+#define T_MISO_GPIO_CLK_ENABLE()        do{ RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB,ENABLE); }while(0)   /* 所在IO口时钟使能 */
 
-#define T_MOSI_GPIO_PORT                GPIOG
-#define T_MOSI_GPIO_PIN                 GPIO_Pin_5
-#define T_MOSI_GPIO_CLK_ENABLE()        do{ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOG,ENABLE); }while(0)   /* 所在IO口时钟使能 */
+#define T_MOSI_GPIO_PORT                GPIOF
+#define T_MOSI_GPIO_PIN                 GPIO_Pin_11
+#define T_MOSI_GPIO_CLK_ENABLE()        do{ RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF,ENABLE); }while(0)   /* 所在IO口时钟使能 */
 
-#define T_CLK_GPIO_PORT                 GPIOG
-#define T_CLK_GPIO_PIN                  GPIO_Pin_2
-#define T_CLK_GPIO_CLK_ENABLE()         do{ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOG,ENABLE); }while(0)   /* 所在IO口时钟使能 */
+#define T_CLK_GPIO_PORT                 GPIOB
+#define T_CLK_GPIO_PIN                  GPIO_Pin_0
+#define T_CLK_GPIO_CLK_ENABLE()         do{ RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB,ENABLE); }while(0)   /* 所在IO口时钟使能 */
 
 /******************************************************************************************/
 

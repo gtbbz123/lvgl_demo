@@ -99,12 +99,14 @@ uint8_t gt9xxx_init(void)
     GT9XXX_INT_GPIO_CLK_ENABLE();   /* INT引脚时钟使能 */
 
     gpio_init_struct.GPIO_Pin = GT9XXX_RST_GPIO_PIN;
-    gpio_init_struct.GPIO_Mode = GPIO_Mode_Out_PP;            /* 推挽输出 */
+    gpio_init_struct.GPIO_Mode = GPIO_Mode_OUT;            /* 推挽输出 */
+		gpio_init_struct.GPIO_OType = GPIO_OType_PP;
     gpio_init_struct.GPIO_Speed = GPIO_Speed_50MHz;          /* 高速 */
     GPIO_Init(GT9XXX_RST_GPIO_PORT, &gpio_init_struct); /* 初始化RST引脚 */
 
     gpio_init_struct.GPIO_Pin = GT9XXX_INT_GPIO_PIN;
-    gpio_init_struct.GPIO_Mode = GPIO_Mode_IN_FLOATING;                /* 输入 */
+		gpio_init_struct.GPIO_Mode = GPIO_Mode_IN;
+    gpio_init_struct.GPIO_PuPd = GPIO_PuPd_NOPULL;                /* 输入 */
     gpio_init_struct.GPIO_Speed = GPIO_Speed_50MHz;          /* 高速 */
     GPIO_Init(GT9XXX_INT_GPIO_PORT, &gpio_init_struct); /* 初始化INT引脚 */
 
@@ -116,7 +118,8 @@ uint8_t gt9xxx_init(void)
 
     /* INT引脚模式设置, 输入模式, 浮空输入 */
     gpio_init_struct.GPIO_Pin = GT9XXX_INT_GPIO_PIN;
-    gpio_init_struct.GPIO_Mode = GPIO_Mode_IN_FLOATING;                /* 输入 */
+    gpio_init_struct.GPIO_Mode = GPIO_Mode_IN;                /* 输入 */
+		gpio_init_struct.GPIO_PuPd = GPIO_PuPd_NOPULL;
     gpio_init_struct.GPIO_Speed = GPIO_Speed_50MHz;          /* 高速 */
 		GPIO_Init(GT9XXX_INT_GPIO_PORT, &gpio_init_struct);
     delay_ms(100);

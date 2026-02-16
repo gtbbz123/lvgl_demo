@@ -22,11 +22,11 @@
 
 #define FT5206_RST_GPIO_PORT            GPIOD
 #define FT5206_RST_GPIO_PIN             GPIO_Pin_11
-#define FT5206_RST_GPIO_CLK_ENABLE()    do{ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD,ENABLE); }while(0)   /* PD口时钟使能 */
+#define FT5206_RST_GPIO_CLK_ENABLE()    do{ RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE); }while(0)   /* PD口时钟使能 */
 
-#define FT5206_INT_GPIO_PORT            GPIOG
-#define FT5206_INT_GPIO_PIN             GPIO_Pin_4
-#define FT5206_INT_GPIO_CLK_ENABLE()    do{ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD,ENABLE); }while(0)   /* PG口时钟使能 */
+#define FT5206_INT_GPIO_PORT            GPIOB
+#define FT5206_INT_GPIO_PIN             GPIO_Pin_1
+#define FT5206_INT_GPIO_CLK_ENABLE()    do{ RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB,ENABLE); }while(0)   /* PG口时钟使能 */
 
 /******************************************************************************************/
 

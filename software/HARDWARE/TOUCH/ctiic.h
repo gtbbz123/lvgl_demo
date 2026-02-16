@@ -20,13 +20,13 @@
 /******************************************************************************************/
 /* CT_IIC 引脚 定义 */
 
-#define CT_IIC_SCL_GPIO_PORT            GPIOG
-#define CT_IIC_SCL_GPIO_PIN             GPIO_Pin_2
-#define CT_IIC_SCL_GPIO_CLK_ENABLE()    do{ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOG,ENABLE); }while(0)   /* PG口时钟使能 */
+#define CT_IIC_SCL_GPIO_PORT            GPIOB
+#define CT_IIC_SCL_GPIO_PIN             GPIO_Pin_0
+#define CT_IIC_SCL_GPIO_CLK_ENABLE()    do{ RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB,ENABLE); }while(0)   /* PG口时钟使能 */
 
-#define CT_IIC_SDA_GPIO_PORT            GPIOG
+#define CT_IIC_SDA_GPIO_PORT            GPIOB
 #define CT_IIC_SDA_GPIO_PIN             GPIO_Pin_5
-#define CT_IIC_SDA_GPIO_CLK_ENABLE()    do{ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOG,ENABLE); }while(0)   /* PG口时钟使能 */
+#define CT_IIC_SDA_GPIO_CLK_ENABLE()    do{ RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB,ENABLE); }while(0)   /* PG口时钟使能 */
 
 /******************************************************************************************/
 

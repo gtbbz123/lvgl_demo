@@ -35,7 +35,7 @@ I (..\STM32F10x\inc\stm32f10x_usart.h)(0x59CE6385)
 I (..\STM32F10x\inc\stm32f10x_wwdg.h)(0x59CE6385)
 I (..\STM32F10x\inc\misc.h)(0x59CE6385)
 I (..\HARDWARE\LED\led.h)(0x68E49F72)
-I (..\HARDWARE\LCD\lcd.h)(0x68E4A035)
+I (..\HARDWARE\LCD\lcd.h)(0x698F3E32)
 I (D:\Keil5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (..\HARDWARE\TOUCH\touch.h)(0x68E4A046)
 I (..\HARDWARE\TOUCH\gt9xxx.h)(0x68E4A054)
@@ -1148,7 +1148,7 @@ I (..\STM32F10x\inc\stm32f10x_wwdg.h)(0x59CE6385)
 I (..\STM32F10x\inc\misc.h)(0x59CE6385)
 F (..\HARDWARE\LCD\lcd.c)(0x692DB025)(--c99 --gnu -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ..\CORE -I ..\STM32F10x\inc -I ..\USER -I ..\HARDWARE\LED -I ..\HARDWARE\LCD -I ..\Middlewares\LVGL\GUI -I ..\Middlewares\LVGL\GUI\lvgl -I ..\Middlewares\LVGL\GUI\lvgl\src -I ..\Middlewares\LVGL\GUI\lvgl\examples\porting -I ..\HARDWARE\TOUCH -I ..\HARDWARE\IIC -I ..\HARDWARE -I ..\Middlewares\FreeRTOS\Source\include -I ..\Middlewares\FreeRTOS\Source\portable\RVDS\ARM_CM3 --diag_suppress=68,111,188,223,546,1295,1362-ID:\Keil5\keilARM-resource\pack\Keil\STM32F1xx_DFP\2.1.0\Device\Include-ID:\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="536" -DSTM32F10X_HD -DSTM32F10XHD -DUSE_STDPERIPH_DRIVER-o ..\obj\lcd.o --omf_browse ..\obj\lcd.crf --depend ..\obj\lcd.d)
 I (D:\Keil5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
-I (..\HARDWARE\LCD\lcd.h)(0x68E4A035)
+I (..\HARDWARE\LCD\lcd.h)(0x698F3E32)
 I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
 I (..\HARDWARE\LCD\lcdfont.h)(0x66B16CFC)
 I (..\USER\stm32f10x.h)(0x59CE6385)
@@ -1217,7 +1217,7 @@ I (..\STM32F10x\inc\stm32f10x_wwdg.h)(0x59CE6385)
 I (..\STM32F10x\inc\misc.h)(0x59CE6385)
 F (..\HARDWARE\TOUCH\ft5206.c)(0x692DB439)(--c99 --gnu -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ..\CORE -I ..\STM32F10x\inc -I ..\USER -I ..\HARDWARE\LED -I ..\HARDWARE\LCD -I ..\Middlewares\LVGL\GUI -I ..\Middlewares\LVGL\GUI\lvgl -I ..\Middlewares\LVGL\GUI\lvgl\src -I ..\Middlewares\LVGL\GUI\lvgl\examples\porting -I ..\HARDWARE\TOUCH -I ..\HARDWARE\IIC -I ..\HARDWARE -I ..\Middlewares\FreeRTOS\Source\include -I ..\Middlewares\FreeRTOS\Source\portable\RVDS\ARM_CM3 --diag_suppress=68,111,188,223,546,1295,1362-ID:\Keil5\keilARM-resource\pack\Keil\STM32F1xx_DFP\2.1.0\Device\Include-ID:\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="536" -DSTM32F10X_HD -DSTM32F10XHD -DUSE_STDPERIPH_DRIVER-o ..\obj\ft5206.o --omf_browse ..\obj\ft5206.crf --depend ..\obj\ft5206.d)
 I (D:\Keil5\ARM\ARMCC\include\string.h)(0x5D9AD218)
-I (..\HARDWARE\LCD\lcd.h)(0x68E4A035)
+I (..\HARDWARE\LCD\lcd.h)(0x698F3E32)
 I (D:\Keil5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
 I (..\HARDWARE\TOUCH\touch.h)(0x68E4A046)
@@ -1256,7 +1256,7 @@ I (..\STM32F10x\inc\stm32f10x_wwdg.h)(0x59CE6385)
 I (..\STM32F10x\inc\misc.h)(0x59CE6385)
 F (..\HARDWARE\TOUCH\gt9xxx.c)(0x692DB33E)(--c99 --gnu -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ..\CORE -I ..\STM32F10x\inc -I ..\USER -I ..\HARDWARE\LED -I ..\HARDWARE\LCD -I ..\Middlewares\LVGL\GUI -I ..\Middlewares\LVGL\GUI\lvgl -I ..\Middlewares\LVGL\GUI\lvgl\src -I ..\Middlewares\LVGL\GUI\lvgl\examples\porting -I ..\HARDWARE\TOUCH -I ..\HARDWARE\IIC -I ..\HARDWARE -I ..\Middlewares\FreeRTOS\Source\include -I ..\Middlewares\FreeRTOS\Source\portable\RVDS\ARM_CM3 --diag_suppress=68,111,188,223,546,1295,1362-ID:\Keil5\keilARM-resource\pack\Keil\STM32F1xx_DFP\2.1.0\Device\Include-ID:\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="536" -DSTM32F10X_HD -DSTM32F10XHD -DUSE_STDPERIPH_DRIVER-o ..\obj\gt9xxx.o --omf_browse ..\obj\gt9xxx.crf --depend ..\obj\gt9xxx.d)
 I (D:\Keil5\ARM\ARMCC\include\string.h)(0x5D9AD218)
-I (..\HARDWARE\LCD\lcd.h)(0x68E4A035)
+I (..\HARDWARE\LCD\lcd.h)(0x698F3E32)
 I (D:\Keil5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
 I (..\HARDWARE\TOUCH\touch.h)(0x68E4A046)
@@ -1293,15 +1293,15 @@ I (..\STM32F10x\inc\stm32f10x_tim.h)(0x59CE6385)
 I (..\STM32F10x\inc\stm32f10x_usart.h)(0x59CE6385)
 I (..\STM32F10x\inc\stm32f10x_wwdg.h)(0x59CE6385)
 I (..\STM32F10x\inc\misc.h)(0x59CE6385)
-F (..\HARDWARE\TOUCH\touch.c)(0x692DB439)(--c99 --gnu -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ..\CORE -I ..\STM32F10x\inc -I ..\USER -I ..\HARDWARE\LED -I ..\HARDWARE\LCD -I ..\Middlewares\LVGL\GUI -I ..\Middlewares\LVGL\GUI\lvgl -I ..\Middlewares\LVGL\GUI\lvgl\src -I ..\Middlewares\LVGL\GUI\lvgl\examples\porting -I ..\HARDWARE\TOUCH -I ..\HARDWARE\IIC -I ..\HARDWARE -I ..\Middlewares\FreeRTOS\Source\include -I ..\Middlewares\FreeRTOS\Source\portable\RVDS\ARM_CM3 --diag_suppress=68,111,188,223,546,1295,1362-ID:\Keil5\keilARM-resource\pack\Keil\STM32F1xx_DFP\2.1.0\Device\Include-ID:\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="536" -DSTM32F10X_HD -DSTM32F10XHD -DUSE_STDPERIPH_DRIVER-o ..\obj\touch.o --omf_browse ..\obj\touch.crf --depend ..\obj\touch.d)
+F (..\HARDWARE\TOUCH\touch.c)(0x698FEA72)(--c99 --gnu -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ..\CORE -I ..\STM32F10x\inc -I ..\USER -I ..\HARDWARE\LED -I ..\HARDWARE\LCD -I ..\Middlewares\LVGL\GUI -I ..\Middlewares\LVGL\GUI\lvgl -I ..\Middlewares\LVGL\GUI\lvgl\src -I ..\Middlewares\LVGL\GUI\lvgl\examples\porting -I ..\HARDWARE\TOUCH -I ..\HARDWARE\IIC -I ..\HARDWARE -I ..\Middlewares\FreeRTOS\Source\include -I ..\Middlewares\FreeRTOS\Source\portable\RVDS\ARM_CM3 --diag_suppress=68,111,188,223,546,1295,1362-ID:\Keil5\keilARM-resource\pack\Keil\STM32F1xx_DFP\2.1.0\Device\Include-ID:\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="536" -DSTM32F10X_HD -DSTM32F10XHD -DUSE_STDPERIPH_DRIVER-o ..\obj\touch.o --omf_browse ..\obj\touch.crf --depend ..\obj\touch.d)
 I (D:\Keil5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (D:\Keil5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
-I (..\HARDWARE\LCD\lcd.h)(0x68E4A035)
+I (..\HARDWARE\LCD\lcd.h)(0x698F3E32)
 I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
 I (..\HARDWARE\TOUCH\touch.h)(0x68E4A046)
 I (..\HARDWARE\TOUCH\gt9xxx.h)(0x68E4A054)
 I (..\HARDWARE\TOUCH\ft5206.h)(0x68E4A060)
-I (..\HARDWARE\TOUCH\24cxx.h)(0x68E4A0E3)
+I (..\HARDWARE\TOUCH\24cxx.h)(0x698F3E5D)
 I (..\USER\delay.h)(0x692D9A2A)
 I (..\USER\stm32f10x.h)(0x59CE6385)
 I (D:\Keil5\ARM\CMSIS\Include\core_cm3.h)(0x559CEB9A)
@@ -1334,11 +1334,6 @@ I (..\STM32F10x\inc\stm32f10x_wwdg.h)(0x59CE6385)
 I (..\STM32F10x\inc\misc.h)(0x59CE6385)
 I (..\HARDWARE\uart.h)(0x69246A30)
 I (D:\Keil5\ARM\ARMCC\include\stdarg.h)(0x5D9AD21A)
-F (..\HARDWARE\TOUCH\24cxx.c)(0x68D36736)(--c99 --gnu -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ..\CORE -I ..\STM32F10x\inc -I ..\USER -I ..\HARDWARE\LED -I ..\HARDWARE\LCD -I ..\Middlewares\LVGL\GUI -I ..\Middlewares\LVGL\GUI\lvgl -I ..\Middlewares\LVGL\GUI\lvgl\src -I ..\Middlewares\LVGL\GUI\lvgl\examples\porting -I ..\HARDWARE\TOUCH -I ..\HARDWARE\IIC -I ..\HARDWARE -I ..\Middlewares\FreeRTOS\Source\include -I ..\Middlewares\FreeRTOS\Source\portable\RVDS\ARM_CM3 --diag_suppress=68,111,188,223,546,1295,1362-ID:\Keil5\keilARM-resource\pack\Keil\STM32F1xx_DFP\2.1.0\Device\Include-ID:\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="536" -DSTM32F10X_HD -DSTM32F10XHD -DUSE_STDPERIPH_DRIVER-o ..\obj\24cxx.o --omf_browse ..\obj\24cxx.crf --depend ..\obj\24cxx.d)
-I (..\HARDWARE\IIC\myiic.h)(0x68E4A089)
-I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
-I (..\HARDWARE\TOUCH\24cxx.h)(0x68E4A0E3)
-I (..\USER\delay.h)(0x692D9A2A)
 F (..\HARDWARE\IIC\myiic.c)(0x68E4A0A8)(--c99 --gnu -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ..\CORE -I ..\STM32F10x\inc -I ..\USER -I ..\HARDWARE\LED -I ..\HARDWARE\LCD -I ..\Middlewares\LVGL\GUI -I ..\Middlewares\LVGL\GUI\lvgl -I ..\Middlewares\LVGL\GUI\lvgl\src -I ..\Middlewares\LVGL\GUI\lvgl\examples\porting -I ..\HARDWARE\TOUCH -I ..\HARDWARE\IIC -I ..\HARDWARE -I ..\Middlewares\FreeRTOS\Source\include -I ..\Middlewares\FreeRTOS\Source\portable\RVDS\ARM_CM3 --diag_suppress=68,111,188,223,546,1295,1362-ID:\Keil5\keilARM-resource\pack\Keil\STM32F1xx_DFP\2.1.0\Device\Include-ID:\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="536" -DSTM32F10X_HD -DSTM32F10XHD -DUSE_STDPERIPH_DRIVER-o ..\obj\myiic.o --omf_browse ..\obj\myiic.crf --depend ..\obj\myiic.d)
 I (..\HARDWARE\IIC\myiic.h)(0x68E4A089)
 I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
@@ -1562,6 +1557,11 @@ I (..\STM32F10x\inc\stm32f10x_wwdg.h)(0x59CE6385)
 I (..\STM32F10x\inc\misc.h)(0x59CE6385)
 I (D:\Keil5\ARM\ARMCC\include\string.h)(0x5D9AD218)
 I (D:\Keil5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
+F (..\HARDWARE\TOUCH\24cxx.c)(0x68D36736)(--c99 --gnu -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ..\CORE -I ..\STM32F10x\inc -I ..\USER -I ..\HARDWARE\LED -I ..\HARDWARE\LCD -I ..\Middlewares\LVGL\GUI -I ..\Middlewares\LVGL\GUI\lvgl -I ..\Middlewares\LVGL\GUI\lvgl\src -I ..\Middlewares\LVGL\GUI\lvgl\examples\porting -I ..\HARDWARE\TOUCH -I ..\HARDWARE\IIC -I ..\HARDWARE -I ..\Middlewares\FreeRTOS\Source\include -I ..\Middlewares\FreeRTOS\Source\portable\RVDS\ARM_CM3 --diag_suppress=68,111,188,223,546,1295,1362-ID:\Keil5\keilARM-resource\pack\Keil\STM32F1xx_DFP\2.1.0\Device\Include-ID:\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="536" -DSTM32F10X_HD -DSTM32F10XHD -DUSE_STDPERIPH_DRIVER-o ..\obj\24cxx.o --omf_browse ..\obj\24cxx.crf --depend ..\obj\24cxx.d)
+I (..\HARDWARE\IIC\myiic.h)(0x68E4A089)
+I (D:\Keil5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
+I (..\HARDWARE\TOUCH\24cxx.h)(0x698F3E5D)
+I (..\USER\delay.h)(0x692D9A2A)
 F (..\Middlewares\LVGL\GUI\lvgl\examples\porting\lv_port_disp_template.c)(0x6953514B)(--c99 --gnu -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ..\CORE -I ..\STM32F10x\inc -I ..\USER -I ..\HARDWARE\LED -I ..\HARDWARE\LCD -I ..\Middlewares\LVGL\GUI -I ..\Middlewares\LVGL\GUI\lvgl -I ..\Middlewares\LVGL\GUI\lvgl\src -I ..\Middlewares\LVGL\GUI\lvgl\examples\porting -I ..\HARDWARE\TOUCH -I ..\HARDWARE\IIC -I ..\HARDWARE -I ..\Middlewares\FreeRTOS\Source\include -I ..\Middlewares\FreeRTOS\Source\portable\RVDS\ARM_CM3 --diag_suppress=68,111,188,223,546,1295,1362-ID:\Keil5\keilARM-resource\pack\Keil\STM32F1xx_DFP\2.1.0\Device\Include-ID:\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="536" -DSTM32F10X_HD -DSTM32F10XHD -DUSE_STDPERIPH_DRIVER-o ..\obj\lv_port_disp_template.o --omf_browse ..\obj\lv_port_disp_template.crf --depend ..\obj\lv_port_disp_template.d)
 I (..\Middlewares\LVGL\GUI\lvgl\examples\porting\lv_port_disp_template.h)(0x68D35E9E)
 I (..\Middlewares\LVGL\GUI\lvgl/lvgl.h)(0x6627BE42)
@@ -1686,7 +1686,7 @@ I (..\Middlewares\LVGL\GUI\lvgl/src/extra/libs/sjpg/lv_sjpg.h)(0x6627BE42)
 I (..\Middlewares\LVGL\GUI\lvgl/src/extra/libs/freetype/lv_freetype.h)(0x6627BE42)
 I (..\Middlewares\LVGL\GUI\lvgl/src/extra/libs/rlottie/lv_rlottie.h)(0x6627BE42)
 I (..\Middlewares\LVGL\GUI\lvgl/src/extra/libs/ffmpeg/lv_ffmpeg.h)(0x6627BE42)
-I (..\HARDWARE\LCD\lcd.h)(0x68E4A035)
+I (..\HARDWARE\LCD\lcd.h)(0x698F3E32)
 I (D:\Keil5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 F (..\Middlewares\LVGL\GUI\lvgl\examples\porting\lv_port_indev_template.c)(0x68E4A0B7)(--c99 --gnu -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ..\CORE -I ..\STM32F10x\inc -I ..\USER -I ..\HARDWARE\LED -I ..\HARDWARE\LCD -I ..\Middlewares\LVGL\GUI -I ..\Middlewares\LVGL\GUI\lvgl -I ..\Middlewares\LVGL\GUI\lvgl\src -I ..\Middlewares\LVGL\GUI\lvgl\examples\porting -I ..\HARDWARE\TOUCH -I ..\HARDWARE\IIC -I ..\HARDWARE -I ..\Middlewares\FreeRTOS\Source\include -I ..\Middlewares\FreeRTOS\Source\portable\RVDS\ARM_CM3 --diag_suppress=68,111,188,223,546,1295,1362-ID:\Keil5\keilARM-resource\pack\Keil\STM32F1xx_DFP\2.1.0\Device\Include-ID:\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="536" -DSTM32F10X_HD -DSTM32F10XHD -DUSE_STDPERIPH_DRIVER-o ..\obj\lv_port_indev_template.o --omf_browse ..\obj\lv_port_indev_template.crf --depend ..\obj\lv_port_indev_template.d)
 I (..\Middlewares\LVGL\GUI\lvgl\examples\porting\lv_port_indev_template.h)(0x68D36050)
