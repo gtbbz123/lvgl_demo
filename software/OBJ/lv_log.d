@@ -1,0 +1,13 @@
+..\obj\lv_log.o: ..\Middlewares\LVGL\GUI\lvgl\src\misc\lv_log.c
+..\obj\lv_log.o: ..\Middlewares\LVGL\GUI\lvgl\src\misc\lv_log.h
+..\obj\lv_log.o: ..\Middlewares\LVGL\GUI\lvgl\src\misc\../lv_conf_internal.h
+..\obj\lv_log.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\lv_log.o: ..\Middlewares\LVGL\GUI\lvgl\src\misc\../lv_conf_kconfig.h
+..\obj\lv_log.o: ..\Middlewares\LVGL\GUI\lvgl\examples\porting\../../lv_conf.h
+..\obj\lv_log.o: ..\Middlewares\LVGL\GUI\lvgl\src\misc\lv_types.h
+..\obj\lv_log.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdarg.h
+..\obj\lv_log.o: D:\Keil5\ARM\ARMCC\Bin\..\include\string.h
+..\obj\lv_log.o: ..\Middlewares\LVGL\GUI\lvgl\src\misc\lv_printf.h
+..\obj\lv_log.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\lv_log.o: ..\Middlewares\LVGL\GUI\lvgl\src\misc\../hal/lv_hal_tick.h
+..\obj\lv_log.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdbool.h

@@ -8,10 +8,12 @@
 #include "task.h"
 #include "vs1053.h"
 #include "spi.h"
-//跑马灯实验 -库函数版本
-//STM32F4工程-库函数版本
-//https://shop58085959.taobao.com		
-RCC_ClocksTypeDef rcc_clocks;
+#include "lvgl.h"
+#include "lv_port_disp_template.h"
+#include "lv_port_indev_template.h"
+#include "touch.h"
+//#include "flash.h"
+#include "ui.h"
 
 
 
@@ -45,7 +47,16 @@ static void task2(void * args){
 //		VS10XX_XDCS(0);
 	}
 }
+
+static void lvgl_task(void *args){
+
+	while(1){
+	lv_task_handler();
+	vTaskDelay(5);
+	}
+}
 TaskHandle_t task1Handler;
+TaskHandle_t lvgl_taskHandler;
 void test(void);
 int main(void)
 { 
@@ -54,12 +65,27 @@ int main(void)
 	LED_Init();		        //初始化LED端口
 	UART_Init();
 	vs10xx_init();
-	test();
+	lv_init();
+	lv_port_disp_init();
+	lv_port_indev_init();
+	UART_printf("11\n");
+	UI_init();
+	//test();
 	xTaskCreate(task1,"task1",128,NULL,1,&task1Handler);
-	xTaskCreate(task2,"task2",128,NULL,1,&task2Handler);
+	//xTaskCreate(task2,"task2",128,NULL,1,&task2Handler);
+	xTaskCreate(lvgl_task,"lvgl_task",512, NULL,1, &lvgl_taskHandler);
 	vTaskStartScheduler();
+while(1){
+		//test();
+		//lv_task_handler();
+}
 
 }
+
+
+
+
+
 u8 buf[512];
 u8 rec[512];
 
@@ -76,11 +102,21 @@ void test(void){
 //	UART_printf("state = %d\n", state);
 //	UART_printf("rec0 = %d\n", rec[0]);
 //	UART_printf("rec1 = %d\n", rec[1]);
-	FRESULT res;
-	res = f_mount(&FILE, "0:", 1);
-	UART_printf("f_mount res = %d\n", res);
-	if(res != 0)
-	f_mkfs("0:", NULL, work, FF_MAX_SS);
+//	FRESULT res;
+//	res = f_mount(&FILE, "0:", 1);
+//	UART_printf("f_mount res = %d\n", res);
+//	if(res != 0)
+//	f_mkfs("0:", NULL, work, FF_MAX_SS);
+//tp_dev.scan(0);
+//lcd_show_num(100,100,tp_dev.x[0],3,16,BLACK);
+//lcd_show_num(100,120,tp_dev.y[0],3,16,BLACK);
+//lcd_show_num(100,140,T_PEN,1,16,BLACK);
+//lcd_show_num(100,100,123,3,16,BLACK);
+//lcd_show_num(100,120,456,3,16,BLACK);
+
+lv_obj_t *switch1 = lv_switch_create(lv_scr_act());
+lv_obj_align(switch1, LV_ALIGN_CENTER,0,0);
+
 }
 
 

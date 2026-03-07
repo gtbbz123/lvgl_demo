@@ -16,7 +16,7 @@
 #include "lcd.h"
 #include "lcdfont.h"
 #include "stm32f4xx.h"
-#include "stm32f4xx_fsmc.h"
+#include "stm32f4xx_FMC.h"
 #include "stm32f4xx_gpio.h"
 #include "uart.h"
 /* lcd_ex.c存放各个LCD驱动IC的寄存器初始化部分代码,以简化lcd.c,该.c文件
@@ -27,7 +27,7 @@
 
 
 //SRAM_HandleTypeDef g_sram_handle;    /* SRAM句柄(用于控制LCD) */
-FSMC_NORSRAMInitTypeDef g_sram_handle;
+FMC_NORSRAMInitTypeDef g_sram_handle;
 /* LCD的画笔颜色和背景色 */
 uint32_t g_point_color = 0XF800;    /* 画笔颜色 */
 uint32_t g_back_color  = 0XFFFF;    /* 背景色 */
@@ -596,12 +596,12 @@ void HAL_SRAM_MspInit()
 		
 	
 	
-    //__HAL_RCC_FSMC_CLK_ENABLE();            /* 使能FSMC时钟 */
+    //__HAL_RCC_FMC_CLK_ENABLE();            /* 使能FMC时钟 */
     //__HAL_RCC_GPIOD_CLK_ENABLE();           /* 使能GPIOD时钟 */
     //__HAL_RCC_GPIOE_CLK_ENABLE();           /* 使能GPIOE时钟 */
 		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE);
 		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE,ENABLE);
-		RCC_AHB3PeriphClockCmd(RCC_AHB3Periph_FSMC,ENABLE);
+		RCC_AHB3PeriphClockCmd(RCC_AHB3Periph_FMC,ENABLE);
     /* 初始化PD0, 1, 8, 9, 10, 14,15*/
     gpio_init_struct.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_8 \
                            | GPIO_Pin_9 | GPIO_Pin_10 | GPIO_Pin_14 | GPIO_Pin_15;
@@ -610,10 +610,27 @@ void HAL_SRAM_MspInit()
     gpio_init_struct.GPIO_Speed = GPIO_Speed_50MHz;            /* 高速 */
     GPIO_Init(GPIOD, &gpio_init_struct);                  /* 初始化 */
 
+		GPIO_PinAFConfig(GPIOD,GPIO_PinSource0, GPIO_AF_FMC);
+		GPIO_PinAFConfig(GPIOD,GPIO_PinSource1, GPIO_AF_FMC);
+		GPIO_PinAFConfig(GPIOD,GPIO_PinSource8, GPIO_AF_FMC);
+		GPIO_PinAFConfig(GPIOD,GPIO_PinSource9, GPIO_AF_FMC);
+		GPIO_PinAFConfig(GPIOD,GPIO_PinSource10, GPIO_AF_FMC);
+		GPIO_PinAFConfig(GPIOD,GPIO_PinSource14, GPIO_AF_FMC);
+		GPIO_PinAFConfig(GPIOD,GPIO_PinSource15, GPIO_AF_FMC);
+
     /* 初始化PE7,8,9,10,11,12,13,14,15 */
     gpio_init_struct.GPIO_Pin = GPIO_Pin_7 | GPIO_Pin_8 | GPIO_Pin_9 | GPIO_Pin_10 \
                            | GPIO_Pin_11 | GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
     GPIO_Init(GPIOE, &gpio_init_struct);
+		GPIO_PinAFConfig(GPIOE,GPIO_PinSource7, GPIO_AF_FMC);
+		GPIO_PinAFConfig(GPIOE,GPIO_PinSource8, GPIO_AF_FMC);
+		GPIO_PinAFConfig(GPIOE,GPIO_PinSource9, GPIO_AF_FMC);
+		GPIO_PinAFConfig(GPIOE,GPIO_PinSource10, GPIO_AF_FMC);
+		GPIO_PinAFConfig(GPIOE,GPIO_PinSource11, GPIO_AF_FMC);
+		GPIO_PinAFConfig(GPIOE,GPIO_PinSource12, GPIO_AF_FMC);
+		GPIO_PinAFConfig(GPIOE,GPIO_PinSource13, GPIO_AF_FMC);
+		GPIO_PinAFConfig(GPIOE,GPIO_PinSource14, GPIO_AF_FMC);
+		GPIO_PinAFConfig(GPIOE,GPIO_PinSource15, GPIO_AF_FMC);
 }
 
 /**
@@ -627,8 +644,8 @@ void lcd_init(void)
 {
 		HAL_SRAM_MspInit();
     GPIO_InitTypeDef gpio_init_struct;
-    FSMC_NORSRAMTimingInitTypeDef fsmc_read_handle;
-    FSMC_NORSRAMTimingInitTypeDef fsmc_write_handle;
+    FMC_NORSRAMTimingInitTypeDef FMC_read_handle;
+    FMC_NORSRAMTimingInitTypeDef FMC_write_handle;
 
     LCD_CS_GPIO_CLK_ENABLE();   /* LCD_CS脚时钟使能 */
     LCD_WR_GPIO_CLK_ENABLE();   /* LCD_WR脚时钟使能 */
@@ -648,9 +665,15 @@ void lcd_init(void)
 
     gpio_init_struct.GPIO_Pin = LCD_RD_GPIO_PIN;
     GPIO_Init(LCD_RD_GPIO_PORT, &gpio_init_struct);     /* 初始化LCD_RD引脚 */
+		
 
     gpio_init_struct.GPIO_Pin = LCD_RS_GPIO_PIN;
     GPIO_Init(LCD_RS_GPIO_PORT, &gpio_init_struct);     /* 初始化LCD_RS引脚 */
+
+		GPIO_PinAFConfig(LCD_CS_GPIO_PORT,GPIO_PinSource12, GPIO_AF_FMC);
+		GPIO_PinAFConfig(LCD_WR_GPIO_PORT,GPIO_PinSource5, GPIO_AF_FMC);
+		GPIO_PinAFConfig(LCD_RD_GPIO_PORT,GPIO_PinSource4, GPIO_AF_FMC);
+		GPIO_PinAFConfig(LCD_RS_GPIO_PORT,GPIO_PinSource12, GPIO_AF_FMC);
 
     gpio_init_struct.GPIO_Pin = LCD_BL_GPIO_PIN;
     gpio_init_struct.GPIO_Mode = GPIO_Mode_OUT;            /* 推挽输出 */
@@ -662,53 +685,53 @@ void lcd_init(void)
 		gpio_init_struct.GPIO_OType = GPIO_OType_PP;           /* 推挽输出 */
     GPIO_Init(LCD_RST_GPIO_PORT, &gpio_init_struct);    /* LCD_RST引脚模式设置(推挽输出) */
 
-//    g_sram_handle.Instance = FSMC_NORSRAM_DEVICE;
-//    g_sram_handle.Extended = FSMC_NORSRAM_EXTENDED_DEVICE;
+//    g_sram_handle.Instance = FMC_NORSRAM_DEVICE;
+//    g_sram_handle.Extended = FMC_NORSRAM_EXTENDED_DEVICE;
 //    
-//    g_sram_handle.Init.NSBank = FSMC_NORSRAM_BANK1;                        /* 使用NE1 */
-//    g_sram_handle.Init.DataAddressMux = FSMC_DATA_ADDRESS_MUX_DISABLE;     /* 地址/数据线不复用 */
-//    g_sram_handle.Init.MemoryDataWidth = FSMC_NORSRAM_MEM_BUS_WIDTH_16;    /* 16位数据宽度 */
-//    g_sram_handle.Init.BurstAccessMode = FSMC_BURST_ACCESS_MODE_DISABLE;   /* 是否使能突发访问,仅对同步突发存储器有效,此处未用到 */
-//    g_sram_handle.Init.WaitSignalPolarity = FSMC_WAIT_SIGNAL_POLARITY_LOW; /* 等待信号的极性,仅在突发模式访问下有用 */
-//    g_sram_handle.Init.WaitSignalActive = FSMC_WAIT_TIMING_BEFORE_WS;      /* 存储器是在等待周期之前的一个时钟周期还是等待周期期间使能NWAIT */
-//    g_sram_handle.Init.WriteOperation = FSMC_WRITE_OPERATION_ENABLE;       /* 存储器写使能 */
-//    g_sram_handle.Init.WaitSignal = FSMC_WAIT_SIGNAL_DISABLE;              /* 等待使能位,此处未用到 */
-//    g_sram_handle.Init.ExtendedMode = FSMC_EXTENDED_MODE_ENABLE;           /* 读写使用不同的时序 */
-//    g_sram_handle.Init.AsynchronousWait = FSMC_ASYNCHRONOUS_WAIT_DISABLE;  /* 是否使能同步传输模式下的等待信号,此处未用到 */
-//    g_sram_handle.Init.WriteBurst = FSMC_WRITE_BURST_DISABLE;              /* 禁止突发写 */
-			g_sram_handle.FSMC_Bank = FSMC_Bank1_NORSRAM4;        // 使用BANK1
-			g_sram_handle.FSMC_DataAddressMux = FSMC_DataAddressMux_Disable; // 地址数据不复用
-			g_sram_handle.FSMC_MemoryType = FSMC_MemoryType_SRAM; // 存储器类型为SRAM
-			g_sram_handle.FSMC_MemoryDataWidth = FSMC_MemoryDataWidth_16b;   // 16位数据宽度
-			g_sram_handle.FSMC_BurstAccessMode = FSMC_BurstAccessMode_Disable; // 禁用突发模式
-			g_sram_handle.FSMC_AsynchronousWait = FSMC_AsynchronousWait_Disable;
-			g_sram_handle.FSMC_WaitSignalPolarity = FSMC_WaitSignalPolarity_Low;
-			g_sram_handle.FSMC_WrapMode = FSMC_WrapMode_Disable;
-			g_sram_handle.FSMC_WaitSignalActive = FSMC_WaitSignalActive_BeforeWaitState;
-			g_sram_handle.FSMC_WriteOperation = FSMC_WriteOperation_Enable;  // 使能写操作
-			g_sram_handle.FSMC_WaitSignal = FSMC_WaitSignal_Disable;
-			g_sram_handle.FSMC_ExtendedMode = FSMC_ExtendedMode_Enable;      // 使能扩展模式（读写不同时序）
-			g_sram_handle.FSMC_WriteBurst = FSMC_WriteBurst_Disable;
-    /* FSMC读时序控制寄存器 */
-    fsmc_read_handle.FSMC_AddressSetupTime = 1;      /* 地址建立时间(ADDSET)为1个HCLK 1/72M = 13.9ns (实际 > 200ns) */
-    fsmc_read_handle.FSMC_AddressHoldTime = 0;       /* 地址保持时间(ADDHLD) 模式A是没有用到 */
+//    g_sram_handle.Init.NSBank = FMC_NORSRAM_BANK1;                        /* 使用NE1 */
+//    g_sram_handle.Init.DataAddressMux = FMC_DATA_ADDRESS_MUX_DISABLE;     /* 地址/数据线不复用 */
+//    g_sram_handle.Init.MemoryDataWidth = FMC_NORSRAM_MEM_BUS_WIDTH_16;    /* 16位数据宽度 */
+//    g_sram_handle.Init.BurstAccessMode = FMC_BURST_ACCESS_MODE_DISABLE;   /* 是否使能突发访问,仅对同步突发存储器有效,此处未用到 */
+//    g_sram_handle.Init.WaitSignalPolarity = FMC_WAIT_SIGNAL_POLARITY_LOW; /* 等待信号的极性,仅在突发模式访问下有用 */
+//    g_sram_handle.Init.WaitSignalActive = FMC_WAIT_TIMING_BEFORE_WS;      /* 存储器是在等待周期之前的一个时钟周期还是等待周期期间使能NWAIT */
+//    g_sram_handle.Init.WriteOperation = FMC_WRITE_OPERATION_ENABLE;       /* 存储器写使能 */
+//    g_sram_handle.Init.WaitSignal = FMC_WAIT_SIGNAL_DISABLE;              /* 等待使能位,此处未用到 */
+//    g_sram_handle.Init.ExtendedMode = FMC_EXTENDED_MODE_ENABLE;           /* 读写使用不同的时序 */
+//    g_sram_handle.Init.AsynchronousWait = FMC_ASYNCHRONOUS_WAIT_DISABLE;  /* 是否使能同步传输模式下的等待信号,此处未用到 */
+//    g_sram_handle.Init.WriteBurst = FMC_WRITE_BURST_DISABLE;              /* 禁止突发写 */
+			g_sram_handle.FMC_Bank = FMC_Bank1_NORSRAM4;        // 使用BANK1
+			g_sram_handle.FMC_DataAddressMux = FMC_DataAddressMux_Disable; // 地址数据不复用
+			g_sram_handle.FMC_MemoryType = FMC_MemoryType_SRAM; // 存储器类型为SRAM
+			g_sram_handle.FMC_MemoryDataWidth = FMC_NORSRAM_MemoryDataWidth_16b;   // 16位数据宽度
+			g_sram_handle.FMC_BurstAccessMode = FMC_BurstAccessMode_Disable; // 禁用突发模式
+			g_sram_handle.FMC_AsynchronousWait = FMC_AsynchronousWait_Disable;
+			g_sram_handle.FMC_WaitSignalPolarity = FMC_WaitSignalPolarity_Low;
+			g_sram_handle.FMC_WrapMode = FMC_WrapMode_Disable;
+			g_sram_handle.FMC_WaitSignalActive = FMC_WaitSignalActive_BeforeWaitState;
+			g_sram_handle.FMC_WriteOperation = FMC_WriteOperation_Enable;  // 使能写操作
+			g_sram_handle.FMC_WaitSignal = FMC_WaitSignal_Disable;
+			g_sram_handle.FMC_ExtendedMode = FMC_ExtendedMode_Enable;      // 使能扩展模式（读写不同时序）
+			g_sram_handle.FMC_WriteBurst = FMC_WriteBurst_Disable;
+    /* FMC读时序控制寄存器 */
+    FMC_read_handle.FMC_AddressSetupTime = 1;      /* 地址建立时间(ADDSET)为1个HCLK 1/72M = 13.9ns (实际 > 200ns) */
+    FMC_read_handle.FMC_AddressHoldTime = 0;       /* 地址保持时间(ADDHLD) 模式A是没有用到 */
     /* 因为液晶驱动IC的读数据的时候，速度不能太快,尤其是个别奇葩芯片 */
-    fsmc_read_handle.FSMC_DataSetupTime = 15;        /* 数据保存时间(DATAST)为16个HCLK = 13.9 * 16 = 222.4ns */
-    fsmc_read_handle.FSMC_AccessMode = FSMC_AccessMode_A;     /* 模式A */
+    FMC_read_handle.FMC_DataSetupTime = 15;        /* 数据保存时间(DATAST)为16个HCLK = 13.9 * 16 = 222.4ns */
+    FMC_read_handle.FMC_AccessMode = FMC_AccessMode_A;     /* 模式A */
     
-    /* FSMC写时序控制寄存器 */
-    fsmc_write_handle.FSMC_AddressSetupTime = 1;     /* 地址建立时间(ADDSET)为1个HCLK = 13.9ns */
-    fsmc_write_handle.FSMC_AddressHoldTime = 0;      /* 地址保持时间(ADDHLD) 模式A是没有用到 */
-    fsmc_write_handle.FSMC_DataSetupTime = 2;        /* 数据保存时间(DATAST)为2个HCLK = 13.9 * 2 = 27.8ns (实际 > 200ns) */
+    /* FMC写时序控制寄存器 */
+    FMC_write_handle.FMC_AddressSetupTime = 1;     /* 地址建立时间(ADDSET)为1个HCLK = 13.9ns */
+    FMC_write_handle.FMC_AddressHoldTime = 0;      /* 地址保持时间(ADDHLD) 模式A是没有用到 */
+    FMC_write_handle.FMC_DataSetupTime = 2;        /* 数据保存时间(DATAST)为2个HCLK = 13.9 * 2 = 27.8ns (实际 > 200ns) */
     /* 某些液晶驱动IC的写信号脉宽，最少也得50ns。 */
-    fsmc_write_handle.FSMC_AccessMode = FSMC_AccessMode_A;    /* 模式A */
+    FMC_write_handle.FMC_AccessMode = FMC_AccessMode_A;    /* 模式A */
     
-		g_sram_handle.FSMC_ReadWriteTimingStruct = &fsmc_read_handle;
-		g_sram_handle.FSMC_WriteTimingStruct = &fsmc_write_handle;
+		g_sram_handle.FMC_ReadWriteTimingStruct = &FMC_read_handle;
+		g_sram_handle.FMC_WriteTimingStruct = &FMC_write_handle;
 		
-    FSMC_NORSRAMInit(&g_sram_handle);
-		FSMC_NORSRAMCmd(FSMC_Bank1_NORSRAM4, ENABLE);
-    delay_ms(50);        /* 初始化FSMC后,必须等待一定时间才能开始初始化 */
+    FMC_NORSRAMInit(&g_sram_handle);
+		FMC_NORSRAMCmd(FMC_Bank1_NORSRAM4, ENABLE);
+    delay_ms(50);        /* 初始化FMC后,必须等待一定时间才能开始初始化 */
 		
 		/* LCD复位 */
 	  LCD_RST(1);
@@ -725,7 +748,6 @@ void lcd_init(void)
     lcddev.id = lcd_rd_data();  /* 读取0X93 */
     lcddev.id <<= 8;
     lcddev.id |= lcd_rd_data(); /* 读取0X41 */
-		UART_printf("lcddev.id = %X\n",lcddev.id);
     if (lcddev.id != 0X9341)    /* 不是 9341 , 尝试看看是不是 ST7789 */
     {
         lcd_wr_regno(0X04);

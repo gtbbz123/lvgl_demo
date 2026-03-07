@@ -35,4 +35,7 @@
 ..\obj\led.o: ..\FWLIB\inc\stm32f4xx_can.h
 ..\obj\led.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\led.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
-..\obj\led.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\led.o: ..\FWLIB\inc\stm32f4xx_dma2d.h
+..\obj\led.o: ..\FWLIB\inc\stm32f4xx_fmc.h
+..\obj\led.o: ..\FWLIB\inc\stm32f4xx_ltdc.h
+..\obj\led.o: ..\FWLIB\inc\stm32f4xx_sai.h

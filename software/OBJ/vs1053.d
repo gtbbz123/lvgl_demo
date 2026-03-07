@@ -35,7 +35,10 @@
 ..\obj\vs1053.o: ..\FWLIB\inc\stm32f4xx_can.h
 ..\obj\vs1053.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\vs1053.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
-..\obj\vs1053.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\vs1053.o: ..\FWLIB\inc\stm32f4xx_dma2d.h
+..\obj\vs1053.o: ..\FWLIB\inc\stm32f4xx_fmc.h
+..\obj\vs1053.o: ..\FWLIB\inc\stm32f4xx_ltdc.h
+..\obj\vs1053.o: ..\FWLIB\inc\stm32f4xx_sai.h
 ..\obj\vs1053.o: ..\HARDWARE\VS1053\spi.h
 ..\obj\vs1053.o: ..\SYSTEM\DEALY\delay.h
 ..\obj\vs1053.o: ..\Middlewares\FATFS\ff.h

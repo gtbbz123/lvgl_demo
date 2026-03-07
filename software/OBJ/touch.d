@@ -6,8 +6,6 @@
 ..\obj\touch.o: ..\HARDWARE\TOUCH\touch.h
 ..\obj\touch.o: ..\HARDWARE\TOUCH\gt9xxx.h
 ..\obj\touch.o: ..\HARDWARE\TOUCH\ft5206.h
-..\obj\touch.o: ..\HARDWARE\TOUCH\24cxx.h
-..\obj\touch.o: ..\SYSTEM\DEALY\delay.h
 ..\obj\touch.o: ..\USER\stm32f4xx.h
 ..\obj\touch.o: ..\CORE\core_cm4.h
 ..\obj\touch.o: D:\Keil5\ARM\RV31\INC\core_cmInstr.h
@@ -41,6 +39,12 @@
 ..\obj\touch.o: ..\FWLIB\inc\stm32f4xx_can.h
 ..\obj\touch.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\touch.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
-..\obj\touch.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\touch.o: ..\FWLIB\inc\stm32f4xx_dma2d.h
+..\obj\touch.o: ..\FWLIB\inc\stm32f4xx_fmc.h
+..\obj\touch.o: ..\FWLIB\inc\stm32f4xx_ltdc.h
+..\obj\touch.o: ..\FWLIB\inc\stm32f4xx_sai.h
+..\obj\touch.o: ..\HARDWARE\TOUCH\24cxx.h
+..\obj\touch.o: ..\SYSTEM\DEALY\delay.h
 ..\obj\touch.o: ..\SYSTEM\UART\uart.h
 ..\obj\touch.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdarg.h
+..\obj\touch.o: ..\HARDWARE\FLASH\flash.h

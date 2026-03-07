@@ -6,8 +6,6 @@
 ..\obj\gt9xxx.o: ..\HARDWARE\TOUCH\touch.h
 ..\obj\gt9xxx.o: ..\HARDWARE\TOUCH\gt9xxx.h
 ..\obj\gt9xxx.o: ..\HARDWARE\TOUCH\ft5206.h
-..\obj\gt9xxx.o: ..\HARDWARE\TOUCH\ctiic.h
-..\obj\gt9xxx.o: ..\SYSTEM\DEALY\delay.h
 ..\obj\gt9xxx.o: ..\USER\stm32f4xx.h
 ..\obj\gt9xxx.o: ..\CORE\core_cm4.h
 ..\obj\gt9xxx.o: D:\Keil5\ARM\RV31\INC\core_cmInstr.h
@@ -41,4 +39,9 @@
 ..\obj\gt9xxx.o: ..\FWLIB\inc\stm32f4xx_can.h
 ..\obj\gt9xxx.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\gt9xxx.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
-..\obj\gt9xxx.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\gt9xxx.o: ..\FWLIB\inc\stm32f4xx_dma2d.h
+..\obj\gt9xxx.o: ..\FWLIB\inc\stm32f4xx_fmc.h
+..\obj\gt9xxx.o: ..\FWLIB\inc\stm32f4xx_ltdc.h
+..\obj\gt9xxx.o: ..\FWLIB\inc\stm32f4xx_sai.h
+..\obj\gt9xxx.o: ..\HARDWARE\TOUCH\ctiic.h
+..\obj\gt9xxx.o: ..\SYSTEM\DEALY\delay.h

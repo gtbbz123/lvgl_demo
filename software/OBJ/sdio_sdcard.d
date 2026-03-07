@@ -34,7 +34,10 @@
 ..\obj\sdio_sdcard.o: ..\FWLIB\inc\stm32f4xx_can.h
 ..\obj\sdio_sdcard.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\sdio_sdcard.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
-..\obj\sdio_sdcard.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\sdio_sdcard.o: ..\FWLIB\inc\stm32f4xx_dma2d.h
+..\obj\sdio_sdcard.o: ..\FWLIB\inc\stm32f4xx_fmc.h
+..\obj\sdio_sdcard.o: ..\FWLIB\inc\stm32f4xx_ltdc.h
+..\obj\sdio_sdcard.o: ..\FWLIB\inc\stm32f4xx_sai.h
 ..\obj\sdio_sdcard.o: D:\Keil5\ARM\RV31\INC\string.h
 ..\obj\sdio_sdcard.o: ..\SYSTEM\sys\sys.h
 ..\obj\sdio_sdcard.o: ..\SYSTEM\UART\uart.h

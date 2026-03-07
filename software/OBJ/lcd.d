@@ -36,7 +36,10 @@
 ..\obj\lcd.o: ..\FWLIB\inc\stm32f4xx_can.h
 ..\obj\lcd.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\lcd.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
-..\obj\lcd.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\lcd.o: ..\FWLIB\inc\stm32f4xx_dma2d.h
+..\obj\lcd.o: ..\FWLIB\inc\stm32f4xx_fmc.h
+..\obj\lcd.o: ..\FWLIB\inc\stm32f4xx_ltdc.h
+..\obj\lcd.o: ..\FWLIB\inc\stm32f4xx_sai.h
 ..\obj\lcd.o: ..\SYSTEM\UART\uart.h
 ..\obj\lcd.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdarg.h
 ..\obj\lcd.o: ..\HARDWARE\LCD\lcd_ex.c

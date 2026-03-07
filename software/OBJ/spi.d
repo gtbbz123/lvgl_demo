@@ -35,6 +35,9 @@
 ..\obj\spi.o: ..\FWLIB\inc\stm32f4xx_can.h
 ..\obj\spi.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\spi.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
-..\obj\spi.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\spi.o: ..\FWLIB\inc\stm32f4xx_dma2d.h
+..\obj\spi.o: ..\FWLIB\inc\stm32f4xx_fmc.h
+..\obj\spi.o: ..\FWLIB\inc\stm32f4xx_ltdc.h
+..\obj\spi.o: ..\FWLIB\inc\stm32f4xx_sai.h
 ..\obj\spi.o: ..\SYSTEM\UART\uart.h
 ..\obj\spi.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdarg.h

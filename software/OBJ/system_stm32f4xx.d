@@ -33,4 +33,7 @@
 ..\obj\system_stm32f4xx.o: ..\FWLIB\inc\stm32f4xx_can.h
 ..\obj\system_stm32f4xx.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\system_stm32f4xx.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
-..\obj\system_stm32f4xx.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\system_stm32f4xx.o: ..\FWLIB\inc\stm32f4xx_dma2d.h
+..\obj\system_stm32f4xx.o: ..\FWLIB\inc\stm32f4xx_fmc.h
+..\obj\system_stm32f4xx.o: ..\FWLIB\inc\stm32f4xx_ltdc.h
+..\obj\system_stm32f4xx.o: ..\FWLIB\inc\stm32f4xx_sai.h

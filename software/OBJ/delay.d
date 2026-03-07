@@ -34,6 +34,9 @@
 ..\obj\delay.o: ..\FWLIB\inc\stm32f4xx_can.h
 ..\obj\delay.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\delay.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
-..\obj\delay.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\delay.o: ..\FWLIB\inc\stm32f4xx_dma2d.h
+..\obj\delay.o: ..\FWLIB\inc\stm32f4xx_fmc.h
+..\obj\delay.o: ..\FWLIB\inc\stm32f4xx_ltdc.h
+..\obj\delay.o: ..\FWLIB\inc\stm32f4xx_sai.h
 ..\obj\delay.o: ..\SYSTEM\UART\uart.h
 ..\obj\delay.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdarg.h

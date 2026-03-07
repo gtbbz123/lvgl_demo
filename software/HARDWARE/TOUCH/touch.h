@@ -19,7 +19,7 @@
 #include <stdint.h>
 #include "gt9xxx.h"
 #include "ft5206.h"
-
+#include "stm32f4xx.h"
 
 /******************************************************************************************/
 /* 电阻触摸屏驱动IC T_PEN/T_CS/T_MISO/T_MOSI/T_SCK 引脚 定义 */
@@ -66,8 +66,8 @@
                       }while(0)     /* T_CS */
 
 
-#define TP_PRES_DOWN    0x80      /* 触屏被按下 */
-#define TP_CATH_PRES    0x40      /* 有按键按下了 */
+#define TP_PRES_DOWN    0x8000      /* 触屏被按下 */
+#define TP_CATH_PRES    0x4000      /* 有按键按下了 */
 #define CT_MAX_TOUCH    5          /* 电容屏支持的点数,固定为5点 */
 
 /* 触摸屏控制器 */

@@ -16,7 +16,6 @@
 
 #include "lcd.h"
 #include "delay.h"
-
 /**
  * @brief       ST7789 寄存器初始化代码
  * @param       无
